@@ -122,9 +122,11 @@ export default function Dashboard() {
     }
   }, [messages, status, addEvent, updateEvent, setAgentStatus]);
 
+  const activeSessionId = activeSession?.id;
+
   // --- Persist messages to active session ---
   useEffect(() => {
-    if (activeSession && messages.length > 0) {
+    if (activeSessionId && messages.length > 0) {
       const serialized = messages.map((m) => ({
         id: m.id,
         role: m.role,
@@ -132,9 +134,9 @@ export default function Dashboard() {
         parts: m.parts,
         createdAt: Date.now(),
       }));
-      updateSessionMessages(activeSession.id, serialized);
+      updateSessionMessages(activeSessionId, serialized);
     }
-  }, [messages, activeSession, updateSessionMessages]);
+  }, [messages, activeSessionId, updateSessionMessages]);
 
   // --- Auto-create first session ---
   useEffect(() => {
@@ -145,10 +147,10 @@ export default function Dashboard() {
 
   // --- Store sandbox info in session ---
   useEffect(() => {
-    if (activeSession && sandboxId) {
-      updateSession(activeSession.id, { sandboxId, streamUrl });
+    if (activeSessionId && sandboxId) {
+      updateSession(activeSessionId, { sandboxId, streamUrl });
     }
-  }, [sandboxId, streamUrl, activeSession, updateSession]);
+  }, [sandboxId, streamUrl, activeSessionId, updateSession]);
 
   const stop = useCallback(() => {
     stopGeneration();

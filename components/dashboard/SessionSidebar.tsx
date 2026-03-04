@@ -69,7 +69,7 @@ export function SessionSidebar({ onSessionSwitch }: SessionSidebarProps) {
       <div className="flex items-center justify-between px-3 py-2 border-b border-zinc-800/50">
         <div className="flex items-center gap-2">
           <PanelLeftClose className="w-3.5 h-3.5 text-zinc-500" />
-          <span className="text-xs font-medium text-zinc-300">Sessions</span>
+          <span className="text-xs font-medium text-zinc-300" suppressHydrationWarning>Sessions</span>
         </div>
         <div className="flex items-center gap-1">
           <button
