@@ -1,5 +1,4 @@
 作者 ：XuBiao
-`<a href="https://ai-sdk-starter-groq.vercel.app">`
 
 <h1 align="center">AI SDK Computer Use Demo</h1>
 </a>
